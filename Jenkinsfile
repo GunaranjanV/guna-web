@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment {
-        DOCKER_IMAGE = 'gunaranjanv/project-10:latest'
+        DOCKER_IMAGE = 'gunaranjanv/project-11:latest'
     }
     tools{
         jdk 'java-11'
@@ -32,7 +32,7 @@ pipeline{
         stage('Containerisation'){
             steps{
                 sh '''
-                docker run -it -d --name guna -p 9015:8080 $DOCKER_IMAGE
+                docker run -it -d --name gunaa -p 9015:8080 $DOCKER_IMAGE
                 '''
             }
         }
