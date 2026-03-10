@@ -1,6 +1,8 @@
 pipeline{
     agent any
-    
+    environment {
+        $DOCKER_IMAGE = 'gunaranjanv/project-9:latest'
+    }
     tools{
         jdk 'java-11'
         maven 'maven'
@@ -24,13 +26,13 @@ pipeline{
         }
         stage('Build and tag'){
             steps{
-                sh 'docker build -t gunaranjanv/project-9:latest .'
+                sh 'docker build -t $DOCKER_IMAGE .'
             }
         }
         stage('Containerisation'){
             steps{
                 sh '''
-                docker run -it -d --name c14 -p 9014:8080 gunaranjanv/project-9:latest
+                docker run -it -d --name guna -p 9015:8080 $DOCKER_IMAGE
                 '''
             }
         }
@@ -45,9 +47,13 @@ pipeline{
         }
          stage('Pushing image to repository'){
             steps{
-                sh 'docker push gunaranjanv/project-9:latest'
+                sh 'docker push $DOCKER_IMAGE'
             }
         }
-        
+        stage('Deploy to Kubernetes'){
+            steps{
+                sh 'microk8s.kubectl apply -f deploy.yaml'
+            }
+        }
     }
 }
