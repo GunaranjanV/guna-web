@@ -32,7 +32,7 @@ pipeline{
         stage('Containerisation'){
             steps{
                 sh '''
-                docker run -it -d --name gunaa -p 9016:8080 $DOCKER_IMAGE
+                docker run -it -d --name gunaranjan -p 9017:8080 $DOCKER_IMAGE
                 '''
             }
         }
