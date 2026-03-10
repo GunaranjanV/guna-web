@@ -23,9 +23,10 @@ kind: Service
 metadata:
   name: devops-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: my-app
   ports:
   - port: 80
     targetPort: 80
+    nodePort: 30080
