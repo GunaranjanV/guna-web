@@ -24,13 +24,13 @@ pipeline{
         }
         stage('Build and tag'){
             steps{
-                sh 'docker build -t GunaranjanV/project-7 .'
+                sh 'docker build -t gunaranjanv/project-8:latest .'
             }
         }
         stage('Containerisation'){
             steps{
                 sh '''
-                docker run -it -d --name c12 -p 9007:8080 GunaranjanV/project-7
+                docker run -it -d --name c13 -p 9004:8080 gunaranjanv/project-8:latest
                 '''
             }
         }
@@ -45,7 +45,7 @@ pipeline{
         }
          stage('Pushing image to repository'){
             steps{
-                sh 'docker push GunaranjanV/project-7'
+                sh 'docker push gunaranjanv/project-8:latest'
             }
         }
         
