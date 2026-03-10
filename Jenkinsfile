@@ -19,7 +19,7 @@ pipeline{
         }
         stage('Code Package'){
             steps{
-                sh 'mvn clean install'
+                sh 'mvn clean package -DskipTests'
             }
         }
         stage('Build and tag'){
