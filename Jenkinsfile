@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment {
-        $DOCKER_IMAGE = 'gunaranjanv/project-9:latest'
+        $DOCKER_IMAGE = 'gunaranjanv/project-10:latest'
     }
     tools{
         jdk 'java-11'
