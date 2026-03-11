@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment {
-        DOCKER_IMAGE = 'gunaranjanv/project-12:latest'
+        DOCKER_IMAGE = 'gunaranjanv/project-13:latest'
     }
     tools{
         jdk 'java-11'
@@ -32,7 +32,7 @@ pipeline{
         stage('Containerisation'){
             steps{
                 sh '''
-                docker run -it -d --name gunaranjanv -p 9018:8080 $DOCKER_IMAGE
+                docker run -it -d --name gunaranjan_webapp -p 9019:8080 $DOCKER_IMAGE
                 '''
             }
         }
